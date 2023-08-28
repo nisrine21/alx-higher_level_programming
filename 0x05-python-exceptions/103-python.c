@@ -67,7 +67,7 @@ void print_python_float(PyObject *p)
 	}
 
 	vl = ((PyFloatObject *)(p))->ob_fval;
-	nf = PyOS_double_to_string(val, 'r', 0, Py_DTSF_ADD_DOT_0, Py_DTST_FINITE);
+	nf = PyOS_double_to_string(vl, 'r', 0, Py_DTSF_ADD_DOT_0, Py_DTST_FINITE);
 
 	printf("  value: %s\n", nf);
 	setbuf(stdout, NULL);
@@ -104,7 +104,7 @@ void print_python_list(PyObject *p)
 	for (j = 0; j < size; j++)
 	{
 		obj = list->ob_item[j];
-		printf("Element %ld: %s\n", i, ((obj)->ob_type)->tp_name);
+		printf("Element %ld: %s\n", j, ((obj)->ob_type)->tp_name);
 
 		if (PyBytes_Check(obj))
 			print_python_bytes(obj);
